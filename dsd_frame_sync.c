@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2010 DSD Author
  * GPG Key ID: 0x3F1D7FD0 (74EF 430D F7F2 0A48 FCE6  F630 FAA2 635D 3F1D 7FD0)
@@ -819,6 +820,10 @@ getFrameSync (dsd_opts * opts, dsd_state * state)
               if ((opts->errorbars == 1) && (opts->verbose > 1) && (state->carrier == 1))
                 {
                   printf ("Sync: no sync\n");
+   char command[256];
+                    int status;
+                    sprintf( command, "aplay -c 1 -q -t wav 05khz.wav" );
+                    status = system( command );
                 }
               noCarrier (opts, state);
               return (-1);
